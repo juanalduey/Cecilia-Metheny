@@ -46,26 +46,3 @@ End Sub
  Sub Grocerystore()
  Call category("Grocery Store")
  End Sub
-
-Sub cmExp()
-
-If ActiveCell.Row > 1 Then
-
-ActiveSheet.Range("a" & ActiveCell.Row).Select
-ActiveSheet.Paste
-Call category("Cecilia Metheny")
-Call note("for " & cmCat & " - " & cmNote)
-ActiveSheet.Range("a" & ActiveCell.Row).Select
-'Application.CutCopyMode = False
-infoMsg ("Great job! You finished recording this transaction.")
-ActiveWorkbook.Save
-ActiveWorkbook.Close
-Workbooks(1).Activate
-Worksheets("Expenses").Activate
-
-Else: criticalMsg ("Please select a blank row.")
-Exit Sub
-
-End If
-
-End Sub
