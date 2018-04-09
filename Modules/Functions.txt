@@ -42,12 +42,10 @@ End If
 End Function
 
 Function GetDataForNextSheet()
-
- ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
- cmCat = ActiveSheet.Range("b" & ActiveCell.Row).Value
- cmNote = ActiveSheet.Range("d" & ActiveCell.Row).Value
- Worksheets("Income").Activate
-
+ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
+cmCat = ActiveSheet.Range("b" & ActiveCell.Row).Value
+cmNote = ActiveSheet.Range("d" & ActiveCell.Row).Value
+Worksheets("Income").Activate
 End Function
 
 Function NoteAddDetails(question As String, title As String, amount, leadString As String, trailString As String)
