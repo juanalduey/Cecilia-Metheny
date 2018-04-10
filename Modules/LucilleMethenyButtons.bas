@@ -50,7 +50,8 @@ Sub lmincome()
         Call note("for " & cmCat & " - " & cmNote)
         Call criticalMsg("Now enter this transaction as an expense in Lucille's spreadsheet. Select the next available row in that sheet, then click the CECILIA METHENY button.")
         ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
-        Workbooks.Open "/Users/ceciliametheny/Desktop/Cecilia Numbers with Macros/LM Sheet (by Juan Alduey).xlsx"
+        Workbooks.Open FileName:=ThisWorkbook.Path & "/LM Sheet (by Juan Alduey).xlsx"
+        Worksheets("Expense").Activate
         Else
         Call criticalMsg("Please choose a blank row.")
         Exit Sub

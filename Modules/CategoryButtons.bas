@@ -10,6 +10,7 @@ Function category(categoryt As String)
         Call criticalMsg("Choose a blank row")
         Else
         ActiveSheet.Range("b" & ActiveCell.Row) = categoryt
+        ActiveSheet.Range("c" & ActiveCell.Row).Select
     End If
 End Function
 

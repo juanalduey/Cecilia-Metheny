@@ -8,6 +8,7 @@ Function Dates(dater As Date)
         Call criticalMsg("Choose a blank row")
         Else
         ActiveSheet.Range("a" & ActiveCell.Row) = dater
+        ActiveSheet.Range("b" & ActiveCell.Row).Select
     End If
 End Function
 
