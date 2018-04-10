@@ -1,48 +1,63 @@
 Attribute VB_Name = "CategotyButtons"
-Public cmCat As String
-Public cmNote As String
+
+
+'CATEGORY FUNCTION
+'This function is used in all macros that enter text in the category field, in the income and expense tabs.
+
+Function category(categoryt As String)
+'enter string in category field of active row
+    If ActiveCell.Row = 1 And ActiveCell.Value = "" Then
+        Call criticalMsg("Choose a blank row")
+        Else
+        ActiveSheet.Range("b" & ActiveCell.Row) = categoryt
+    End If
+End Function
+
+'CATEGORY MACROS
+'These macros are used for the buttons that enter text in the 'category' field of the income and
+'expense tabs.
 
 Sub clearfilters()
 ActiveSheet.ShowAllData
 End Sub
 
 Sub CeMe()
-Call category("CeMe")
+    Call category("CeMe")
 End Sub
 
 Sub NewSchool()
-Call category("The New School")
+    Call category("The New School")
 End Sub
 
 Sub SocialSecurity()
-Call category("Social Security")
-ActiveSheet.Range("c" & ActiveCell.Row).Value = "928"
+    Call category("Social Security")
+    ActiveSheet.Range("c" & ActiveCell.Row).Value = "928"
 End Sub
  
  Sub Foodout()
- Call category("Food Out")
+    Call category("Food Out")
  End Sub
  
 Sub BizTravel()
-Call category("Business Travel")
+    Call category("Business Travel")
 End Sub
 
 Sub OfficeSupplies()
-Call category("Office Supplies")
+    Call category("Office Supplies")
 End Sub
 
 Sub Laundry()
-Call category("Laundry")
+    Call category("Laundry")
 End Sub
 
 Sub Taxi()
-category ("Taxi")
+    category ("Taxi")
 End Sub
  
  Sub Publictrans()
- Call category("Public Transit")
+    Call category("Public Transit")
  End Sub
  
  Sub Grocerystore()
- Call category("Grocery Store")
+    Call category("Grocery Store")
  End Sub
