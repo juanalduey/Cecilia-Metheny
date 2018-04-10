@@ -18,9 +18,6 @@ End Function
 'These macros are used for the buttons that enter text in the 'category' field of the income and
 'expense tabs.
 
-Sub clearfilters()
-ActiveSheet.ShowAllData
-End Sub
 
 Sub CeMe()
     Call category("CeMe")
