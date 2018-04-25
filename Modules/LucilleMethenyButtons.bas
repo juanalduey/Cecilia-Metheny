@@ -21,7 +21,7 @@ End Function
  
  Sub fvb()
  'Add FVB - 1380 to notes field, then instruct on next step for recording transaction
-    Call note("FVB - 1380")
+    Call Note("FVB - 1380")
     If ActiveCell.Row > 1 Then
         Call criticalMsg("Go to the income tab, select the next availabe row, then press the Lucille Metheny button.")
         Call GetDataForNextSheet
@@ -32,7 +32,7 @@ End Function
 
 Sub lmftb()
 'Add 53B - 4896 to notes field, then instruct on next step for recording transaction
-    Call note("53B - 4896")
+    Call Note("53B - 4896")
     If ActiveCell.Row > 1 Then
         Call criticalMsg("Go to the income tab, select the next available row, and press the Lucille Metheny button")
         Call GetDataForNextSheet
@@ -47,7 +47,7 @@ Sub lmincome()
         ActiveSheet.Range("a" & ActiveCell.Row).Select
         ActiveSheet.Paste
         Call category("Lucille Metheny")
-        Call note("for " & cmCat & " - " & cmNote)
+        Call Note("for " & cmCat & " - " & cmNote)
         Call criticalMsg("Now enter this transaction as an expense in Lucille's spreadsheet. Select the next available row in that sheet, then click the CECILIA METHENY button.")
         ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
         Workbooks.Open FileName:=ThisWorkbook.Path & "/LM Sheet (by Juan Alduey).xlsx"
@@ -65,7 +65,7 @@ Sub cmExp()
         ActiveSheet.Range("a" & ActiveCell.Row).Select
         ActiveSheet.Paste
         Call category("Cecilia Metheny")
-        Call note("for " & cmCat & " - " & cmNote)
+        Call Note("for " & cmCat & " - " & cmNote)
         ActiveSheet.Range("a" & ActiveCell.Row).Select
         Call infoMsg("Great job! You finished recording this transaction.")
         ActiveWorkbook.Save
