@@ -44,9 +44,7 @@ End Sub
 Sub lmincome()
 'add income from Lucille Metheny, then give further instruction on recording transaction
     If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
-        With ActiveSheet
-            .Range("a" & ActiveCell.Row).Select
-        End With
+        ActiveSheet.Range("a" & ActiveCell.Row).Select
         Selection.PasteSpecial Paste:=xlPasteValues
         Call category("Lucille Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
@@ -64,9 +62,7 @@ End Sub
 Sub cmExp()
 'insert 'Cecile Metheny' in 'expense' field of active row in Lucille Metheny spreadsheet, along with transaction details.
     If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
-        With ActiveSheet
-            .Range("a" & ActiveCell.Row).Select
-        End With
+        ActiveSheet.Range("a" & ActiveCell.Row).Select
         Selection.PasteSpecial Paste:=xlPasteValues
         Call category("Cecilia Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
