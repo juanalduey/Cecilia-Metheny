@@ -46,8 +46,8 @@ Sub lmincome()
     If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
         With ActiveSheet
             .Range("a" & ActiveCell.Row).Select
-            .Paste
         End With
+        Selection.PasteSpecial Paste:=xlPasteValues
         Call category("Lucille Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
         Call criticalMsg("Now enter this transaction as an expense in Lucille's spreadsheet. Select the next available row in that sheet, then click the CECILIA METHENY button.")
@@ -66,8 +66,8 @@ Sub cmExp()
     If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
         With ActiveSheet
             .Range("a" & ActiveCell.Row).Select
-            .Paste
         End With
+        Selection.PasteSpecial Paste:=xlPasteValues
         Call category("Cecilia Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
         ActiveSheet.Range("a" & ActiveCell.Row).Select

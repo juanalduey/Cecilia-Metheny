@@ -2,8 +2,6 @@ Attribute VB_Name = "NoteButtons"
 Public NotesField As Object
 Public Notes As String
 
-
-
 'NOTE FUNCTIONS
 ' These functions are used in the note macros, which add text to the 'notes' field in either the income or
 'expenses tab.

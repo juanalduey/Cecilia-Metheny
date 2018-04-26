@@ -4,7 +4,7 @@ Attribute VB_Name = "DateButtons"
 'This function is used in the macros that insert text in the 'date' field of the income and expense tabs.
 
 Function Dates(dater As Date)
-    If ActiveCell.Row = 1 Then
+    If ActiveCell.Row = 1 Or Not ActiveCell.Value = "" Then
         Call criticalMsg("Choose a blank row")
         Else
         With ActiveSheet
