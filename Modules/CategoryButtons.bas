@@ -9,8 +9,10 @@ Function category(categoryt As String)
     If ActiveCell.Row = 1 And ActiveCell.Value = "" Then
         Call criticalMsg("Choose a blank row")
         Else
-        ActiveSheet.Range("b" & ActiveCell.Row) = categoryt
-        ActiveSheet.Range("c" & ActiveCell.Row).Select
+        With ActiveSheet
+            .Range("b" & ActiveCell.Row) = categoryt
+            .Range("c" & ActiveCell.Row).Select
+        End With
     End If
 End Function
 

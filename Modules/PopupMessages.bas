@@ -6,8 +6,7 @@ Attribute VB_Name = "PopupMessages"
 Function criticalMsg(message As String)
 'pop up message with alert icon
     a = MsgBox(message, vbCritical, "Heads up")
-    ActiveWorkbook.Save
-End Function
+    End Function
 
 Function infoMsg(message As String)
 'pop up message with info icon

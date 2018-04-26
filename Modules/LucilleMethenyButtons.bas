@@ -44,8 +44,10 @@ End Sub
 Sub lmincome()
 'add income from Lucille Metheny, then give further instruction on recording transaction
     If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
-        ActiveSheet.Range("a" & ActiveCell.Row).Select
-        ActiveSheet.Paste
+        With ActiveSheet
+            .Range("a" & ActiveCell.Row).Select
+            .Paste
+        End With
         Call category("Lucille Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
         Call criticalMsg("Now enter this transaction as an expense in Lucille's spreadsheet. Select the next available row in that sheet, then click the CECILIA METHENY button.")
@@ -61,15 +63,19 @@ End Sub
 
 Sub cmExp()
 'insert 'Cecile Metheny' in 'expense' field of active row in Lucille Metheny spreadsheet, along with transaction details.
-    If ActiveCell.Row > 1 Then
-        ActiveSheet.Range("a" & ActiveCell.Row).Select
-        ActiveSheet.Paste
+    If ActiveCell.Row > 1 And ActiveCell.Value = "" Then
+        With ActiveSheet
+            .Range("a" & ActiveCell.Row).Select
+            .Paste
+        End With
         Call category("Cecilia Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
         ActiveSheet.Range("a" & ActiveCell.Row).Select
         Call infoMsg("Great job! You finished recording this transaction.")
-        ActiveWorkbook.Save
-        ActiveWorkbook.Close
+        With ActiveWorkbook
+            .Save
+            .Close
+        End With
         Workbooks(1).Activate
         Worksheets("Expenses").Activate
         Else: Call criticalMsg("Please select a blank row.")

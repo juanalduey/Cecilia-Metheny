@@ -67,6 +67,11 @@ Sub tdb()
     Call Note("TDB - 4978")
 End Sub
 
+Sub tdbCheck()
+'Add TDB - Check 2069 to the notes field
+    Call Note("TDB- Check 2069")
+End Sub
+
 Sub AmazonPrimeVisa()
 ' Add Amazon Prime Visa - 5474
     Call Note("Amazon Prime Visa - 5474")
