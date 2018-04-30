@@ -6,7 +6,7 @@ Attribute VB_Name = "CategotyButtons"
 
 Function category(categoryt As String)
 'enter string in category field of active row
-    If ActiveCell.Row = 1 Or Not ActiveCell.Value = "" Then
+    If ActiveCell.Row = 1 Or Not Range("b" & ActiveCell.Row).Value = "" Then
         Call criticalMsg("Choose a blank row")
         Else
         With ActiveSheet
