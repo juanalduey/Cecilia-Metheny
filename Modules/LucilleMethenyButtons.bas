@@ -21,7 +21,6 @@ Function GetDataForNextSheet()
     Worksheets("Income").Activate
     Call lmincome
 End Function
-
  
 'LUCILLE METHENY MACROS
 'These macros are for the buttons that facilitate the process of entering a transaction
@@ -30,14 +29,44 @@ End Function
  
  Sub fvb()
  'Add FVB - 1380 to notes field, then instruct on next step for recording transaction
-    Call Note("FVB - 1380")
+    Call SetNotesFieldObject
+    If Not NotesField.Value = "" Then GoTo errorhandler
+continue:    Call Note("FVB - 1380")
     Call GetDataForNextSheet
-    End Sub
+    Exit Sub
+errorhandler:
+    If NotesField.Value = "FVB - 1380" Or NotesField.Value = "53B - 4896" Then
+        criticalMsg ("To override this note, delete the corresponding transactions in your income tab and in Lucille's expense tab, then manually clear the notes field of this row.")
+        Else
+        a = MsgBox("This cell has information in it. Do you want to override it?", vbYesNo, "Replace Content")
+        If a = vbYes Then
+        NotesField.Value = ""
+        GoTo continue
+        Else: Exit Sub
+        End If
+        End If
+    
+End Sub
 
 Sub lmftb()
 'Add 53B - 4896 to notes field
-    Call Note("53B - 4896")
+Call SetNotesFieldObject
+    If Not NotesField.Value = "" Then GoTo errorhandler
+continue:    Call Note("53B - 4896")
     Call GetDataForNextSheet
+    Exit Sub
+errorhandler:
+    If NotesField.Value = "FVB - 1380" Or NotesField.Value = "53B - 4896" Then
+        criticalMsg ("To override this note, delete the corresponding transactions in your income tab and in Lucille's expense tab, then manually clear the notes field of this row.")
+        Else
+        a = MsgBox("This cell has information in it. Do you want to override it?", vbYesNo, "Replace Content")
+        If a = vbYes Then
+        NotesField.Value = ""
+        GoTo continue
+        Else: Exit Sub
+        End If
+        End If
+    
 End Sub
 
 
@@ -51,9 +80,7 @@ Sub lmincome()
         Call Note("for " & cmCat & " - " & cmNote)
         ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
         Workbooks.Open FileName:=ThisWorkbook.Path & "/LM Sheet (by Juan Alduey).xlsx"
-        ActiveWindow.Visible = True
         Worksheets("Expense").Activate
-        Call NextBlankRow
         Call cmExp
 End Sub
 
@@ -71,7 +98,7 @@ Sub cmExp()
            .Save
            .Close
     End With
-        Workbooks(1).Activate
-        Worksheets("Expenses").Activate
+        Workbooks("CM Sheet (by Juan Alduey).xlsm").Activate
+        Sheets("Expenses").Select
         Call infoMsg("The corresponding transactions have been recorded in both your income tab and in Lucille Metheny's expense tab.")
 End Sub
