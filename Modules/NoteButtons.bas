@@ -17,10 +17,10 @@ Function Note(Notes)
     Else
     Call SetNotesFieldObject
     End If
-    If Not NotesField.Value = "" Then GoTo errorhandler
+    If Not NotesField.Value = "" Then GoTo ErrorHandler
     NotesField.Value = Notes
     Exit Function
-errorhandler:
+ErrorHandler:
     If NotesField.Value = "FVB - 1380" Or NotesField.Value = "53B - 4896" Then
         criticalMsg ("To override this note, delete the corresponding transactions in your income tab and in Lucille's expense tab, then manually clear the notes field of this row.")
         Exit Function
@@ -45,11 +45,11 @@ End Function
 
 Function NoteAddDetails(question As String, title As String, amount, leadString As String, trailString As String)
         Call SetNotesFieldObject
-        If NotesField.Value = "" Or NotesField.Value = "Cash" Then GoTo errorhandler
+        If NotesField.Value = "" Or NotesField.Value = "Cash" Then GoTo ErrorHandler
 AskForAmount:         amount = InputBox(question, title)
         Call noteadd(leadString, amount + trailString)
         Exit Function
-errorhandler:
+ErrorHandler:
        If NotesField.Value = "Cash" Then
        criticalMsg ("No such thing as a debit/credit charge, or cash back, when you pay cash.")
        Else

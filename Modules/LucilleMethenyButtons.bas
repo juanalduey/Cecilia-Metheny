@@ -30,11 +30,11 @@ End Function
  Sub fvb()
  'Add FVB - 1380 to notes field, then instruct on next step for recording transaction
     Call SetNotesFieldObject
-    If Not NotesField.Value = "" Then GoTo errorhandler
+    If Not NotesField.Value = "" Then GoTo ErrorHandler
 continue:    Call Note("FVB - 1380")
     Call GetDataForNextSheet
     Exit Sub
-errorhandler:
+ErrorHandler:
     If NotesField.Value = "FVB - 1380" Or NotesField.Value = "53B - 4896" Then
         criticalMsg ("To override this note, delete the corresponding transactions in your income tab and in Lucille's expense tab, then manually clear the notes field of this row.")
         Else
@@ -51,11 +51,11 @@ End Sub
 Sub lmftb()
 'Add 53B - 4896 to notes field
 Call SetNotesFieldObject
-    If Not NotesField.Value = "" Then GoTo errorhandler
+    If Not NotesField.Value = "" Then GoTo ErrorHandler
 continue:    Call Note("53B - 4896")
     Call GetDataForNextSheet
     Exit Sub
-errorhandler:
+ErrorHandler:
     If NotesField.Value = "FVB - 1380" Or NotesField.Value = "53B - 4896" Then
         criticalMsg ("To override this note, delete the corresponding transactions in your income tab and in Lucille's expense tab, then manually clear the notes field of this row.")
         Else
@@ -76,7 +76,7 @@ Sub lmincome()
         ActiveSheet.Range("a" & ActiveCell.Row).Select
         Selection.PasteSpecial Paste:=xlPasteValues
         ActiveSheet.Range("b" & ActiveCell.Row).Value = ""
-        Call category("Lucille Metheny")
+        Call Category("Lucille Metheny")
         Call Note("for " & cmCat & " - " & cmNote)
         ActiveSheet.Range("a" & ActiveCell.Row, "c" & ActiveCell.Row).Copy
         Workbooks.Open FileName:=ThisWorkbook.Path & "/LM Sheet (by Juan Alduey).xlsx"
@@ -91,7 +91,7 @@ Sub cmExp()
     ActiveSheet.Range("a" & ActiveCell.Row).Select
     Selection.PasteSpecial Paste:=xlPasteValues
     Range("b" & ActiveCell.Row).Value = ""
-    Call category("Cecilia Metheny")
+    Call Category("Cecilia Metheny")
     Call Note("for " & cmCat & " - " & cmNote)
     ActiveSheet.Range("a" & ActiveCell.Row).Select
     With ActiveWorkbook
